@@ -17,6 +17,7 @@
         style="@style/styleEditText1"
         android:hint="نام و نام خانوادگی*"
         android:inputType="textPersonName"
+        android:textColorHighlight="@color/pink_100"
         tools:text="Name" />
 
     <EditText
@@ -24,12 +25,14 @@
         style="@style/styleEditText1"
         android:hint="کد ملی*"
         android:inputType="number"
+        android:textColorHighlight="@color/pink_100"
         tools:text="National code" />
 
     <EditText
         android:id="@+id/et_place_birth"
         style="@style/styleEditText1"
         android:hint="محل تولد*"
+        android:textColorHighlight="@color/pink_100"
         tools:text="place of birth" />
 
     <EditText
@@ -37,6 +40,7 @@
         style="@style/styleEditText1"
         android:hint="آدرس*"
         android:inputType="textLongMessage"
+        android:textColorHighlight="@color/pink_100"
         tools:text="address" />
 
     <EditText
@@ -44,6 +48,7 @@
         style="@style/styleEditText1"
         android:hint="کد پستی*"
         android:inputType="number"
+        android:textColorHighlight="@color/pink_100"
         tools:text="zip code" />
 
     <TextView
@@ -53,7 +58,9 @@
         android:text="جنسیت"
         android:paddingHorizontal="8dp"
         android:textAlignment="viewEnd" />
+
     <RadioGroup
+        android:id="@+id/rg_jender"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="3"
@@ -84,7 +91,9 @@
             android:text="مرد"
             android:textSize="24sp" />
     </RadioGroup>
+
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_submit"
         style="@style/styleButton1"
-        android:text="ثبت اطلاعات"/>
+        android:text="ثبت اطلاعات" />
 </LinearLayout>
