@@ -2,7 +2,89 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical">
 
 
+    <TextView
+        android:id="@+id/tv_title1"
+        style="@style/styleTextViewTitle"
+        android:hint="فرم ثبت اطلاعات"
+        tools:text="TextView" />
+
+    <EditText
+        android:id="@+id/et_name"
+        style="@style/styleEditText1"
+        android:hint="نام و نام خانوادگی*"
+        android:inputType="textPersonName"
+        tools:text="Name" />
+
+    <EditText
+        android:id="@+id/et_national_code"
+        style="@style/styleEditText1"
+        android:hint="کد ملی*"
+        android:inputType="number"
+        tools:text="National code" />
+
+    <EditText
+        android:id="@+id/et_place_birth"
+        style="@style/styleEditText1"
+        android:hint="محل تولد*"
+        tools:text="place of birth" />
+
+    <EditText
+        android:id="@+id/et_address"
+        style="@style/styleEditText1"
+        android:hint="آدرس*"
+        android:inputType="textLongMessage"
+        tools:text="address" />
+
+    <EditText
+        android:id="@+id/et_zip_code"
+        style="@style/styleEditText1"
+        android:hint="کد پستی*"
+        android:inputType="number"
+        tools:text="zip code" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:text="جنسیت"
+        android:paddingHorizontal="8dp"
+        android:textAlignment="viewEnd" />
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3"
+        android:contentDescription="جنسیت"
+        android:orientation="horizontal"
+        android:textAlignment="textStart">
+
+        <RadioButton
+            android:id="@+id/rb_female"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:buttonTint="@color/pink_500"
+            android:gravity="end|center_vertical"
+            android:lineSpacingExtra="16sp"
+            android:text="زن"
+            android:textSize="24sp"
+            android:typeface="normal" />
+
+        <RadioButton
+            android:id="@+id/rb_male"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:buttonTint="@color/pink_500"
+            android:checked="true"
+            android:gravity="end|center_vertical"
+            android:text="مرد"
+            android:textSize="24sp" />
+    </RadioGroup>
+    <com.google.android.material.button.MaterialButton
+        style="@style/styleButton1"
+        android:text="ثبت اطلاعات"/>
 </LinearLayout>
