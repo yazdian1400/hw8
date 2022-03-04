@@ -1,6 +1,7 @@
 package ir.homework.hw8
 
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -70,8 +71,10 @@ class MainActivity : AppCompatActivity() {
                 }
                 editor.putString(GENDER, gender)
                 editor.apply()
+
+                val intent = Intent(this,ShowInfoActivity::class.java)
+                startActivity(intent)
             }
-            Toast.makeText(this, getHasRegisteredFromShared().toString(), Toast.LENGTH_LONG).show()
         }
     }
 

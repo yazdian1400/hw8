@@ -9,7 +9,7 @@
     <TextView
         android:id="@+id/tv_title1"
         style="@style/styleTextViewTitle"
-        android:hint="فرم ثبت اطلاعات"
+        android:text="فرم ثبت اطلاعات"
         tools:text="TextView" />
 
     <EditText
