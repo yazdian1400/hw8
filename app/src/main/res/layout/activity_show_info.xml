@@ -9,7 +9,7 @@
 
     <TextView
         style="@style/styleTextViewTitle"
-        tools:text="مشاهده اطلاعات ثبت شده"/>
+        android:text="مشاهده اطلاعات ثبت شده"/>
     <TextView
         android:id="@+id/tv_full_name"
         tools:text="name"
@@ -38,5 +38,5 @@
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_edit_info"
         style="@style/styleButton1"
-        android:text="ثبت اطلاعات" />
+        android:text="تغییر اطلاعات" />
 </LinearLayout>

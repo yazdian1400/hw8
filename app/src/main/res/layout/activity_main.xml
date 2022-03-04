@@ -3,14 +3,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:paddingVertical="8dp">
 
 
     <TextView
         android:id="@+id/tv_title1"
         style="@style/styleTextViewTitle"
-        android:text="فرم ثبت اطلاعات"
-        tools:text="TextView" />
+        android:text="فرم ثبت اطلاعات" />
 
     <EditText
         android:id="@+id/et_name"
@@ -60,11 +60,10 @@
         android:textAlignment="viewEnd" />
 
     <RadioGroup
-        android:id="@+id/rg_jender"
+        android:id="@+id/rg_gender"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="3"
-        android:contentDescription="جنسیت"
         android:orientation="horizontal"
         android:textAlignment="textStart">
 
@@ -74,6 +73,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:buttonTint="@color/pink_500"
+            android:checked="true"
             android:gravity="end|center_vertical"
             android:lineSpacingExtra="16sp"
             android:text="زن"
@@ -86,7 +86,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:buttonTint="@color/pink_500"
-            android:checked="true"
+            android:checked="false"
             android:gravity="end|center_vertical"
             android:text="مرد"
             android:textSize="24sp" />

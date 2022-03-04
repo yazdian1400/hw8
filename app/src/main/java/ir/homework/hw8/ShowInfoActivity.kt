@@ -1,6 +1,7 @@
 package ir.homework.hw8
 
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -13,21 +14,30 @@ class ShowInfoActivity : AppCompatActivity() {
         setContentView(R.layout.activity_show_info)
         binding = ActivityShowInfoBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        showInfo()
 
+        binding.btnEditInfo.setOnClickListener{
+            val intent = Intent(this, MainActivity::class.java)
+            intent.putExtra(MainActivity.HAS_REGISTERED, true)
+            startActivity(intent)
+        }
+    }
+
+    private fun showInfo() {
         val sharedPreferences: SharedPreferences =
-            getSharedPreferences("kotlinSharedPreference", Context.MODE_PRIVATE)
+            getSharedPreferences("kotlinSharedPreference", MODE_PRIVATE)
         val hasRegistered = sharedPreferences.getBoolean(MainActivity.HAS_REGISTERED, false)
-        if (hasRegistered){
-            binding.tvFullName.text = sharedPreferences.getString(MainActivity.FULL_NAME,"")
-            binding.tvNationalCode.text = sharedPreferences.getString(MainActivity.NATIONAL_CODE,"")
-            binding.tvBirthPlace.text = sharedPreferences.getString(MainActivity.BIRTH_PLACE,"")
-            binding.tvAddress.text = sharedPreferences.getString(MainActivity.ADDRESS,"")
-            binding.tvZipCode.text = sharedPreferences.getString(MainActivity.ZIP_CODE,"")
-            binding.tvGender.text = when(sharedPreferences.getString(MainActivity.ZIP_CODE,"")){
+        if (hasRegistered) {
+            binding.tvFullName.text = sharedPreferences.getString(MainActivity.FULL_NAME, "")
+            binding.tvNationalCode.text =
+                sharedPreferences.getString(MainActivity.NATIONAL_CODE, "")
+            binding.tvBirthPlace.text = sharedPreferences.getString(MainActivity.BIRTH_PLACE, "")
+            binding.tvAddress.text = sharedPreferences.getString(MainActivity.ADDRESS, "")
+            binding.tvZipCode.text = sharedPreferences.getString(MainActivity.ZIP_CODE, "")
+            binding.tvGender.text = when (sharedPreferences.getString(MainActivity.GENDER, "")) {
                 "male" -> "مرد"
                 else -> "زن"
             }
-
         }
     }
 }

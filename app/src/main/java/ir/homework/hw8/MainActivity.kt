@@ -6,6 +6,7 @@ import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import ir.homework.hw8.MainActivity.Companion.HAS_REGISTERED
 import ir.homework.hw8.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -20,10 +21,28 @@ class MainActivity : AppCompatActivity() {
         const val ZIP_CODE = "zipCode"
         const val GENDER = "gender"
     }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+
+        val hasRegistered = intent.getBooleanExtra(HAS_REGISTERED,false)
+        //Toast.makeText(this, intent.getBooleanExtra(HAS_REGISTERED,false).toString(),Toast.LENGTH_LONG).show()
+        if (hasRegistered){
+            val sharedPreferences: SharedPreferences =
+                getSharedPreferences("kotlinSharedPreference", Context.MODE_PRIVATE)
+            binding.etName.setText(sharedPreferences.getString(FULL_NAME,""))
+            binding.etNationalCode.setText(sharedPreferences.getString(NATIONAL_CODE,""))
+            binding.etPlaceBirth.setText(sharedPreferences.getString(BIRTH_PLACE,""))
+            binding.etAddress.setText(sharedPreferences.getString(ADDRESS,""))
+            binding.etZipCode.setText(sharedPreferences.getString(ZIP_CODE,""))
+            when (sharedPreferences.getString(GENDER,"")){
+                "male" -> binding.rbMale.isChecked = true
+                else -> binding.rbFemale.isChecked = true
+            }
+        }
 
         onClickListeners()
     }
@@ -65,7 +84,7 @@ class MainActivity : AppCompatActivity() {
                 editor.putString(BIRTH_PLACE, binding.etPlaceBirth.text.toString())
                 editor.putString(ADDRESS, binding.etAddress.text.toString())
                 editor.putString(ZIP_CODE, binding.etZipCode.text.toString())
-                val gender = when (binding.rgJender.checkedRadioButtonId){
+                val gender = when (binding.rgGender.checkedRadioButtonId){
                     binding.rbFemale.id ->  "female"
                     else -> "male"
                 }
@@ -78,10 +97,10 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun getHasRegisteredFromShared() : Boolean{
+    private fun getHasRegisteredFromShared(): Boolean {
         val sharedPreferences: SharedPreferences =
             getSharedPreferences("kotlinSharedPreference", Context.MODE_PRIVATE)
-        var hasRegistered = sharedPreferences.getBoolean(HAS_REGISTERED , false)
-        return hasRegistered
+        val editor = sharedPreferences.edit()
+        return sharedPreferences.getBoolean(HAS_REGISTERED, false)
     }
 }
