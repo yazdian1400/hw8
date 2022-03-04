@@ -14,12 +14,28 @@ class ShowInfoActivity : AppCompatActivity() {
         setContentView(R.layout.activity_show_info)
         binding = ActivityShowInfoBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
         showInfo()
 
-        binding.btnEditInfo.setOnClickListener{
+        setOnClickListeners()
+    }
+
+    private fun setOnClickListeners() {
+        binding.btnEditInfo.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
             intent.putExtra(MainActivity.HAS_REGISTERED, true)
             startActivity(intent)
+        }
+        binding.btnNewUser.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            intent.putExtra(MainActivity.HAS_REGISTERED, false)
+            val sharedPreferences: SharedPreferences =
+                getSharedPreferences("kotlinSharedPreference", MODE_PRIVATE)
+            sharedPreferences.edit().clear().apply()
+            startActivity(intent)
+        }
+        binding.btnExit.setOnClickListener {
+            this.finishAffinity()
         }
     }
 
@@ -28,15 +44,14 @@ class ShowInfoActivity : AppCompatActivity() {
             getSharedPreferences("kotlinSharedPreference", MODE_PRIVATE)
         val hasRegistered = sharedPreferences.getBoolean(MainActivity.HAS_REGISTERED, false)
         if (hasRegistered) {
-            binding.tvFullName.text = sharedPreferences.getString(MainActivity.FULL_NAME, "")
-            binding.tvNationalCode.text =
-                sharedPreferences.getString(MainActivity.NATIONAL_CODE, "")
-            binding.tvBirthPlace.text = sharedPreferences.getString(MainActivity.BIRTH_PLACE, "")
-            binding.tvAddress.text = sharedPreferences.getString(MainActivity.ADDRESS, "")
-            binding.tvZipCode.text = sharedPreferences.getString(MainActivity.ZIP_CODE, "")
+            binding.tvFullName.text = "نام و نام خانوادگی: " + sharedPreferences.getString(MainActivity.FULL_NAME, "")
+            binding.tvNationalCode.text = "کد ملی: " + sharedPreferences.getString(MainActivity.NATIONAL_CODE, "")
+            binding.tvBirthPlace.text = "محل تولد: " + sharedPreferences.getString(MainActivity.BIRTH_PLACE, "")
+            binding.tvAddress.text = "آدرس: " + sharedPreferences.getString(MainActivity.ADDRESS, "")
+            binding.tvZipCode.text = "کد پستی: " + sharedPreferences.getString(MainActivity.ZIP_CODE, "")
             binding.tvGender.text = when (sharedPreferences.getString(MainActivity.GENDER, "")) {
-                "male" -> "مرد"
-                else -> "زن"
+                "male" -> "جنسیت: مرد"
+                else -> "جنسیت: زن"
             }
         }
     }

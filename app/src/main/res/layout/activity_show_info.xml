@@ -39,4 +39,14 @@
         android:id="@+id/btn_edit_info"
         style="@style/styleButton1"
         android:text="تغییر اطلاعات" />
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_new_user"
+        style="@style/styleButton1"
+        android:text="ورود کاربر جدید"
+        android:backgroundTint="@color/red"/>
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_exit"
+        style="@style/styleButton1"
+        android:text="خروج"
+        android:backgroundTint="@color/yellow"/>
 </LinearLayout>

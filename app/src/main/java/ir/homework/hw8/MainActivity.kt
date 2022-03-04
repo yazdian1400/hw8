@@ -27,10 +27,8 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
-        val hasRegistered = intent.getBooleanExtra(HAS_REGISTERED,false)
-        //Toast.makeText(this, intent.getBooleanExtra(HAS_REGISTERED,false).toString(),Toast.LENGTH_LONG).show()
-        if (hasRegistered){
+        val hasRegistered1 = intent.getBooleanExtra(HAS_REGISTERED,false)
+        if (hasRegistered1){
             val sharedPreferences: SharedPreferences =
                 getSharedPreferences("kotlinSharedPreference", Context.MODE_PRIVATE)
             binding.etName.setText(sharedPreferences.getString(FULL_NAME,""))
@@ -41,6 +39,14 @@ class MainActivity : AppCompatActivity() {
             when (sharedPreferences.getString(GENDER,"")){
                 "male" -> binding.rbMale.isChecked = true
                 else -> binding.rbFemale.isChecked = true
+            }
+        } else {
+            val sharedPreferences: SharedPreferences =
+                getSharedPreferences("kotlinSharedPreference", Context.MODE_PRIVATE)
+            val hasRegistered2 = sharedPreferences.getBoolean(HAS_REGISTERED, false)
+            if (hasRegistered2){
+                val intent = Intent(this, ShowInfoActivity::class.java)
+                startActivity(intent)
             }
         }
 
